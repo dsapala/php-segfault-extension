@@ -1,0 +1,9 @@
+#! /bin/sh
+#
+# Created by configure
+
+CC='/usr/bin/clang' \
+CXX='/usr/bin/clang++' \
+'./configure' \
+'--enable-segfault' \
+"$@"

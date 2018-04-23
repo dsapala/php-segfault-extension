@@ -1,0 +1,8 @@
+segfault.lo: /Users/dsapala/try/php-segfault-extension/segfault.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/Users/dsapala/try/php-segfault-extension $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /Users/dsapala/try/php-segfault-extension/segfault.c -o segfault.lo 
+$(phplibdir)/segfault.la: ./segfault.la
+	$(LIBTOOL) --mode=install cp ./segfault.la $(phplibdir)
+
+./segfault.la: $(shared_objects_segfault) $(SEGFAULT_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_segfault) $(SEGFAULT_SHARED_LIBADD)
+
